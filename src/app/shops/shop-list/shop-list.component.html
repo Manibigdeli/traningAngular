@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-primary">Add new Shoes +</button> 
+    </div><hr>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <app-shop-item *ngFor="let shoeses of shoes" 
+        [shoes]="shoeses"></app-shop-item>
+    </div>
+</div>

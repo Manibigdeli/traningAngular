@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-xs-12">
+        <img [src]="shoes.img" alt="{{shoes.name}}" style="max-height: 100px;">
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h1>{{shoes.name}}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="btn-group" appDropdown>
+            <button class="btn btn-danger dropdown-toggle">
+                Manage Shoes <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" style="cursor: pointer;">
+                <li><a  (click)="OnAddToShoppinList()">Add Shoes To Shopping-list</a></li>
+                <li><a >Edit</a></li>
+                <li><a >Delete</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <span>{{shoes.descraption}}</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <ul class="list-group">
+            <li class="list-group-item" style="border: 1px solid red;">
+               This Shoes Price => <span class="price">${{shoes.price}}</span>
+            </li>
+        </ul>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let brands of shoes.brandmodel">
+               (Shoesbrand) {{brands.name}} | TotalAmount =>{{brands.amount}} 
+
+            </li>
+        </ul>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let callmodel of shoes.call" style="border: 1px solid black;">
+                SupportCall:  <span class="support">{{callmodel.phone}}</span>  | SupportEmail: <span class="email">{{callmodel.email}}</span> 
+
+            </li>
+        </ul>
+    </div>
+</div>
