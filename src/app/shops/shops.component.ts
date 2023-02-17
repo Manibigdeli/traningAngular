@@ -5,21 +5,17 @@ import { ShopsService } from './shops.service';
 @Component({
   selector: 'app-shops',
   templateUrl: './shops.component.html',
-  styleUrls: ['./shops.component.css'],
-  providers: [ShopsService]
+  styleUrls: ['./shops.component.css']
 })
 export class ShopsComponent implements OnInit {
 
-  SelctedShoes:ShoesModel
   
 
-  constructor(private ShoesService:ShopsService) { }
+  constructor() { }
 
-  ngOnInit(){
-   this.ShoesService.ShoesSelcted.subscribe(
-    (shoes:ShoesModel)=>{
-      this.SelctedShoes = shoes
-    })
-  }
+  ngOnInit(){}
+
+
+ 
 
 }

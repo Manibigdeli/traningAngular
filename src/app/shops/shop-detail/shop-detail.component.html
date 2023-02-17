@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <img [src]="shoes.img" alt="{{shoes.name}}" style="max-height: 100px;">
+        <img [src]="shoes.img" alt="{{shoes.name}}" style="max-height: 100px; border-radius: 20px;">
     </div>
 </div>
 <div class="row">
@@ -16,8 +16,8 @@
             </button>
             <ul class="dropdown-menu" style="cursor: pointer;">
                 <li><a  (click)="OnAddToShoppinList()">Add Shoes To Shopping-list</a></li>
-                <li><a >Edit</a></li>
-                <li><a >Delete</a></li>
+                <li><a  (click)="Onedit()" >Edit</a></li>
+                <li><a (click)="OnDelet()">Delete</a></li>
             </ul>
         </div>
     </div>
@@ -46,5 +46,24 @@
 
             </li>
         </ul>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let size of shoes.shoessize">
+                Shoes Size = <span class="size" style="border: 1px solid red;">{{size.Size}}</span>
+            </li>
+        </ul>
+        
+        
+                <div class="radio-inline" *ngFor="let colors of color">
+                    <label>
+                        <input type="radio"  id="radio" [value]="color">
+                        {{colors}}
+                    </label>
+                </div> 
+                <div class="button-group">
+                    <button (click)="OnAddToShoppinList()" class="btn btn-success">Add to Shop</button> |
+                    <button (click)="OneditShoes()" class="btn btn-warning">Edit</button>
+
+                </div>
+            
     </div>
 </div>

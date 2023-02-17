@@ -19,6 +19,11 @@ export class ShoppingListComponent implements OnInit {
       }
     )
   }
+
+  Onedititem(id : number){
+    this.ShoppingService.startededitingmode.next(id)
+
+  }
     
   }
 

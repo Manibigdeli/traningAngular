@@ -9,10 +9,12 @@ import { ShopsService } from '../shops.service';
 })
 export class ShopItemComponent implements OnInit {
  @Input() shoes:ShoesModel
-
-
+ @Input() id:number
+ constructor(){}
 
   ngOnInit(): void {
   }
  
+
+
 }

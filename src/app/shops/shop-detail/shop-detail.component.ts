@@ -1,5 +1,5 @@
 import { Component, OnInit,  } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ShoesModel } from '../shoes.model';
 import { ShopsService } from '../shops.service';
 
@@ -11,7 +11,12 @@ import { ShopsService } from '../shops.service';
 export class ShopDetailComponent implements OnInit {
    shoes:ShoesModel
    id: number
-  constructor(private ShopService:ShopsService , private route:ActivatedRoute ,) { }
+
+   color = ['black' , 'White' , "Red"]
+   
+  constructor(private ShopService:ShopsService ,
+     private route:ActivatedRoute ,
+     private router:Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(
@@ -24,6 +29,20 @@ export class ShopDetailComponent implements OnInit {
 
   OnAddToShoppinList(){
    this.ShopService.Addbrandtoshoppinglist(this.shoes.brandmodel)
+  }
+
+
+  Onedit(){
+  this.router.navigate(['edit'],{relativeTo:this.route})
+  }
+
+
+  OneditShoes(){
+    this.router.navigate(['edit'],{relativeTo:this.route})
+  }
+
+  OnDelet(){
+    this.ShopService.OnDelete(this.id)
   }
 
 }
