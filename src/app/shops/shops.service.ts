@@ -14,52 +14,61 @@ export class ShopsService{
 
   
 
-   private shoes : ShoesModel[] = [
-        new ShoesModel('AirJordan' 
-        , 'This is best Shoes' ,
-         'https://houseofheat.co/app/uploads/2021/02/Air-Jordan-1-FlyEase-Turf-Orange-CQ3835-008-Release-Date.jpg' 
-         , 100,[
-          new BrandsModel('Jordan',2)
+  //  private shoes : ShoesModel[] = [
+  //       new ShoesModel('AirJordan' 
+  //       , 'This is best Shoes' ,
+  //        'https://houseofheat.co/app/uploads/2021/02/Air-Jordan-1-FlyEase-Turf-Orange-CQ3835-008-Release-Date.jpg' 
+  //        , 100,[
+  //         new BrandsModel('Jordan',2)
 
-         ],[
-          new CallInformationModel('09125411618','mani.bigdeli1381@gmail.com')
-         ],[
-          new SizeModel(42)
-         ],[
-          new ShoesColorModel(['black' , 'white' , 'red'])
-         ]),
+  //        ],[
+  //         new CallInformationModel('09125411618','mani.bigdeli1381@gmail.com')
+  //        ],[
+  //         new SizeModel(42)
+  //        ],[
+  //         new ShoesColorModel(['black' , 'white' , 'red'])
+  //        ]),
     
-        new ShoesModel('Balanciago' ,
-         'best for Womens Wear' , 'https://m.media-amazon.com/images/I/71UqbZE6v1L._UX500_.jpg'
-          , 200,[
-            new BrandsModel('Nike',3)
+  //       new ShoesModel('Balanciago' ,
+  //        'best for Womens Wear' , 'https://sneakernews.com/wp-content/uploads/2022/02/air-jordan-1-mid-yellow-white-bq6472-117-8.jpg'
+  //         , 200,[
+  //           new BrandsModel('Nike',3)
 
-          ],[
-            new CallInformationModel('09125411618','mani.bigdeli1381@gmail.com')
+  //         ],[
+  //           new CallInformationModel('09125411618','mani.bigdeli1381@gmail.com')
 
-          ],[
-            new SizeModel(41)
-          ],[
-            new ShoesColorModel(['black' , 'white' ])
-          ]),
+  //         ],[
+  //           new SizeModel(41)
+  //         ],[
+  //           new ShoesColorModel(['black' , 'white' ])
+  //         ]),
     
-        new ShoesModel('Adidas Air' 
-        , 'this Is A great Shoes' ,
-         'https://blog.footdistrict.com/wp-content/uploads/2022/10/enfrentadas.png' , 300,[
-          new BrandsModel('Adidas' , 1)
+  //       new ShoesModel('Adidas Air' 
+  //       , 'this Is A great Shoes' ,
+  //        'https://media.architecturaldigest.com/photos/57a11cbeb6c434ab487bc26b/4:3/w_1032,h_774,c_limit/nikes-senior-designer-explains-what-went-into-new-air-jordan-01.png' , 300,[
+  //         new BrandsModel('Adidas' , 1)
 
-         ],[
-          new CallInformationModel('09125411618','mani.bigdeli1381@gmail.com')
-         ],[
-          new SizeModel(44)
-         ],[
-          new ShoesColorModel(['black' , 'white' ])
-         ])
-      ]
+  //        ],[
+  //         new CallInformationModel('09125411618','mani.bigdeli1381@gmail.com')
+  //        ],[
+  //         new SizeModel(44)
+  //        ],[
+  //         new ShoesColorModel(['black' , 'white' ])
+  //        ])
+  //     ]
+
+      private shoes : ShoesModel[] = []
+
       constructor(private shoppinglistService:ShoppingListService){}
+
+    setShoes(Shoes:ShoesModel[]){
+      this.shoes = Shoes;
+      this.shoeschanges.next(this.shoes.slice())
+    }
 
       getshoes(){
         return this.shoes.slice()
+        this.shoeschanges.next(this.shoes.slice());
       }
 
 

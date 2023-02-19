@@ -25,7 +25,9 @@ export class ShopDetailComponent implements OnInit {
         this.shoes = this.ShopService.getshoesid(this.id)
       }
     )
+    
   }
+  
 
   OnAddToShoppinList(){
    this.ShopService.Addbrandtoshoppinglist(this.shoes.brandmodel)
@@ -42,7 +44,8 @@ export class ShopDetailComponent implements OnInit {
   }
 
   OnDelet(){
-    this.ShopService.OnDelete(this.id)
+    this.ShopService.OnDelete(this.id);
+    this.router.navigate(['/shop'],{relativeTo:this.route})
   }
 
 }

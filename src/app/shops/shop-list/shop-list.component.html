@@ -1,11 +1,13 @@
 <div class="row">
     <div class="col-xs-12">
-        <button class="btn btn-primary" (click)="OnAddnewShoes()">Add new Shoes +</button> 
+        <button class="btn btn-success" 
+        (click)="OnAddnewShoes()">Add new Shoes 
+        <img src="data:image/png;base64,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" alt="buy-logo" style="max-width: 15px;"></button> 
     </div><hr>
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <app-shop-item *ngFor="let shoeses of shoes ; let shoesid = index"
-        [shoes]="shoeses" [id]="shoesid"></app-shop-item>
+        <app-shop-item *ngFor="let shoeses of shoes ; let index = index"
+        [shoes]="shoeses" [id]="index"></app-shop-item>
     </div>
 </div>

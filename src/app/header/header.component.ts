@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataStorageService } from '../shared/data-storage-shoes.service';
 
 
 @Component({
@@ -8,14 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private datastorage:DataStorageService) { }
   
 
   ngOnInit(): void {
   }
  
 
- 
+  OnSaveData(){
+    this.datastorage.SaveShoesFirebase();
+
+  }
+
+  FetchingDatas(){
+    this.datastorage.FetchingData()
+  }
 
 
 

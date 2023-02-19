@@ -33,7 +33,7 @@ export class ShopListComponent implements OnInit,OnDestroy {
 
   }
 
-ngOnDestroy(): void {
+  ngOnDestroy(): void {
   this.Subscription.unsubscribe();
 }
 

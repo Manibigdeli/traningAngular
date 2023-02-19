@@ -36,7 +36,7 @@
         </ul>
         <ul class="list-group">
             <li class="list-group-item" *ngFor="let brands of shoes.brandmodel">
-               (Shoesbrand) {{brands.name}} | TotalAmount =>{{brands.amount}} 
+               (Shoesbrand) {{brands.name}} | TotalAmount: {{brands.amount}} 
 
             </li>
         </ul>
@@ -48,7 +48,7 @@
         </ul>
         <ul class="list-group">
             <li class="list-group-item" *ngFor="let size of shoes.shoessize">
-                Shoes Size = <span class="size" style="border: 1px solid red;">{{size.Size}}</span>
+                Shoes Size = <span class="size">{{size.Size}}</span>
             </li>
         </ul>
         

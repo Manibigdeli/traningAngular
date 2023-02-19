@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+
 import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
 import { ShopDetailComponent } from "./shops/shop-detail/shop-detail.component";
 import { ShopEditComponent } from "./shops/shop-edit/shop-edit.component";
