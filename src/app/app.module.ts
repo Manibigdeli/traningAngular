@@ -18,6 +18,7 @@ import { AppRoutingModule } from './app.routing.module';
 import { ShopStartComponent } from './shops/shop-start/shop-start.component';
 import { ShopEditComponent } from './shops/shop-edit/shop-edit.component';
 import { ShopsService } from './shops/shops.service';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ShopsService } from './shops/shops.service';
     ShoppingEditComponent,
     DropDownDirective,
     ShopStartComponent,
-    ShopEditComponent
+    ShopEditComponent,
+    AuthComponent
     
  
   

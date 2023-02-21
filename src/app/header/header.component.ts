@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   }
 
   FetchingDatas(){
-    this.datastorage.FetchingData()
+    this.datastorage.FetchingData().subscribe()
   }
 
 

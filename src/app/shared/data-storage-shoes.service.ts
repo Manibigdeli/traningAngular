@@ -3,6 +3,9 @@ import { ShoesModel } from "../shops/shoes.model";
 
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { map } from "rxjs/operators";
+import { tap } from "rxjs/internal/operators/tap";
+import { BrandsModel } from "./brands.model";
 @Injectable({providedIn:'root'})
 export class DataStorageService{
     constructor( private http:HttpClient ,private ShoesService:ShopsService){
@@ -19,11 +22,19 @@ export class DataStorageService{
     }
 
     FetchingData(){
-     this.http.get<ShoesModel[]>('https://angular-shoes-shop-default-rtdb.firebaseio.com/shoes.json').subscribe(
-            (FetchingData)=>{
-                console.log(FetchingData);
-                this.ShoesService.setShoes(FetchingData);
-            }
-        )
+     return this.http.get<ShoesModel[]>('https://angular-shoes-shop-default-rtdb.firebaseio.com/shoes.json').pipe(map(
+        shoes=>{
+            return shoes.map(
+                shoes=>{
+                    return{
+                        ...shoes
+                          
+                    }
+                }
+            )}
+     ),
+     tap(shoes=>{
+        this.ShoesService.setShoes(shoes)
+     }))
     }
 }
