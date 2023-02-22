@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
-import { error } from "console";
 import { AuthService } from "./auth.service";
 
 @Component({
