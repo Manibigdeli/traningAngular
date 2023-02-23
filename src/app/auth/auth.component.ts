@@ -4,11 +4,14 @@ import { AuthService } from "./auth.service";
 
 @Component({
     selector: 'app-auth',
-    templateUrl:'./auth.component.html'
+    templateUrl:'./auth.component.html',
+    styleUrls: ['./auth.component.css']
+    
 })
 export class AuthComponent{
     LoginMode = true;
     isloading = false;
+    error:string = null;
 
 constructor(private authservice:AuthService){}
     onswithMode(){
@@ -34,6 +37,7 @@ constructor(private authservice:AuthService){}
                 this.isloading = false
             },error =>{
                 console.log(error);
+                this.error = 'An Error occurred! SupportCall:09125411618'
                 this.isloading = false
  
             }
