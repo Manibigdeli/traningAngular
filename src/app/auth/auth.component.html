@@ -12,12 +12,16 @@
                 <input type="email"
                  id="email" class="form-control" name="email" 
                  ngModel required email placeholder="Example Mani.bigdeli1381@gmail.com">
+                 <span class="help-block" *ngIf="!authform.valid
+                  && authform.touched">Please enter email</span>
             </div>
             <div class="form-group">
                 <label for="password">password</label>
                 <input type="password"
                  id="password" class="form-control" minlength="4" 
                  name="password" ngModel required placeholder="Example info@9020">
+                 <span class="help-block" *ngIf="!authform.valid
+                  && authform.touched">Please enter password</span>
             </div>
             <div>
                 <button class="btn btn-primary" [disabled]="!authform.valid" type="submit">
