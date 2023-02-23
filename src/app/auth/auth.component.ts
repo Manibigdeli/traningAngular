@@ -35,9 +35,12 @@ constructor(private authservice:AuthService){}
             respnsData=>{
                 console.log(respnsData);
                 this.isloading = false
-            },error =>{
-                console.log(error);
-                this.error = 'An Error occurred! SupportCall:09125411618'
+            },errorRespons=>{
+                console.log(errorRespons);
+                switch (errorRespons.error.error.message){
+                    case 'EMAIL_EXISTS':
+                        this.error = 'this email exist already'
+                }
                 this.isloading = false
  
             }
