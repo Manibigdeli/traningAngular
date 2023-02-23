@@ -1,6 +1,9 @@
 <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3">
-        <form (ngSubmit)="OnSubmite(authform)" #authform="ngForm">
+        <div *ngIf="isloading" style="text-align: center;">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+        <form (ngSubmit)="OnSubmite(authform)" #authform="ngForm" *ngIf="!isloading">
             <div class="form-group">
                 <label for="email">E-mail</label>
                 <input type="email"
@@ -12,9 +15,9 @@
                  id="password" class="form-control" minlength="4" name="password" ngModel required>
             </div>
             <div>
-                <button class="btn btn-primary" [disabled]="!authform.valid">
+                <button class="btn btn-primary" [disabled]="!authform.valid" type="submit">
                     {{LoginMode ? 'login' : 'Signup'}}</button> |
-                <button class="btn btn-primary" type="submit"
+                <button class="btn btn-primary" type="button"
                  (click)="onswithMode()">Swtich to {{LoginMode? 'Signup' : 'login' }}</button>
             </div>
             

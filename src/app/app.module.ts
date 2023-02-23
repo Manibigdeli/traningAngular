@@ -19,6 +19,7 @@ import { ShopStartComponent } from './shops/shop-start/shop-start.component';
 import { ShopEditComponent } from './shops/shop-edit/shop-edit.component';
 import { ShopsService } from './shops/shops.service';
 import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinner } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { AuthComponent } from './auth/auth.component';
     DropDownDirective,
     ShopStartComponent,
     ShopEditComponent,
-    AuthComponent
+    AuthComponent,
+    LoadingSpinner,
+ 
     
  
   
