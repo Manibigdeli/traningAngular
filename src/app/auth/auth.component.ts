@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
+import { Observable } from "rxjs";
+import { AuthSignUpModel } from "./auth-signup.model";
 import { AuthService } from "./auth.service";
 
 @Component({
@@ -27,26 +29,32 @@ constructor(private authservice:AuthService){}
         }
         const email  = authform.value.email;
         const password = authform.value.password;
+        
+        
+        //observable
+        let authobs$ : Observable<AuthSignUpModel>;
+        
+
         this.isloading = true;
       if(this.LoginMode){
-       //..login
+        authobs$ =  this.authservice.login(email , password)
        }else{
-        this.authservice.signup(email , password).subscribe(
-            respnsData=>{
-                console.log(respnsData);
-                this.isloading = false
-            },errorRespons=>{
-                console.log(errorRespons);
-                switch (errorRespons.error.error.message){
-                    case 'EMAIL_EXISTS':
-                        this.error = 'this email exist already'
-                }
-                this.isloading = false
- 
-            }
-            
-        )
+        authobs$ = this.authservice.signup(email , password)
     }
+    authobs$.subscribe(
+        respnsData=>{
+            console.log(respnsData);
+            this.isloading = false
+        },errormessage=>{
+            console.log(errormessage);
+            this.error = errormessage
+            this.isloading = false
+
+        }
+    )
+
+
+ 
 
         authform.reset();
 
