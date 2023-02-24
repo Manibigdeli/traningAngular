@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, Routes } from '@angular/router';
 import { DataStorageService } from '../shared/data-storage-shoes.service';
 
 
@@ -9,7 +11,7 @@ import { DataStorageService } from '../shared/data-storage-shoes.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private datastorage:DataStorageService) { }
+  constructor(private datastorage:DataStorageService, private router:Router ,private activeroute:ActivatedRoute) { }
   
 
   ngOnInit(): void {
@@ -23,6 +25,10 @@ export class HeaderComponent implements OnInit {
 
   FetchingDatas(){
     this.datastorage.FetchingData().subscribe()
+  }
+
+  OnLogout(){
+    this.router.navigate(['/shop'],{relativeTo:this.activeroute})
   }
 
 
