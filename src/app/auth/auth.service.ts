@@ -45,10 +45,10 @@ returnSecureToken:true
         errormessage = 'this email exist already';
         break;
         case 'INVALID_PASSWORD':
-          errormessage = 'You Re Forget Password?';
+          errormessage = 'INVALID_PASSWORD';
           break;
           case 'EMAIL_NOT_FOUND':
-            errormessage = 'This Email is not Founde'
+            errormessage = 'EMAIL NOT FOUND'
   }
   return throwError(errormessage)
 
