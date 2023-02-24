@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { AuthSignUpModel } from "./auth-signup.model";
 import { AuthService } from "./auth.service";
@@ -15,7 +16,7 @@ export class AuthComponent{
     isloading = false;
     error:string = null;
 
-constructor(private authservice:AuthService){}
+constructor(private authservice:AuthService , private router:Router, private activeroute:ActivatedRoute){}
     onswithMode(){
         this.LoginMode = !this.LoginMode
     }
@@ -44,7 +45,8 @@ constructor(private authservice:AuthService){}
     authObs$.subscribe(
         respnsData=>{
             console.log(respnsData);
-            this.isloading = false
+            this.isloading = false;
+            this.router.navigate(['/shop'],{relativeTo:this.activeroute})
         },errormessage=>{
             console.log(errormessage);
             this.error = errormessage
