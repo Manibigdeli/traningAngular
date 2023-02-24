@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
@@ -21,17 +21,7 @@ email:email,
 password:password,
 returnSecureToken:true
 }
-).pipe(catchError(errorRespons=>{
-  let errormessage = 'An unknow error';
-  if(!errorRespons.error || !errorRespons.error.error){
-    return throwError(errormessage)
-  }
-  switch (errorRespons.error.error.message){
-    case 'EMAIL_EXISTS':
-      errormessage = 'this email exist already'
-}
-return throwError(errormessage)
-}))
+).pipe(catchError(this.HandleError))
   }
 
 
@@ -41,7 +31,26 @@ return throwError(errormessage)
       email:email,
       password:password,
       returnSecureToken : true
-    })
+    }).pipe(catchError(this.HandleError))
+
+  }
+
+  private HandleError(errorRes : HttpErrorResponse){
+    let errormessage = 'An unknow error!';
+    if(!errorRes.error || !errorRes.error.error){
+      return throwError(errormessage)
+    }
+    switch (errorRes.error.error.message){
+      case 'EMAIL_EXISTS':
+        errormessage = 'this email exist already';
+        break;
+        case 'INVALID_PASSWORD':
+          errormessage = 'You Re Forget Password?';
+          break;
+          case 'EMAIL_NOT_FOUND':
+            errormessage = 'This Email is not Founde'
+  }
+  return throwError(errormessage)
 
   }
 

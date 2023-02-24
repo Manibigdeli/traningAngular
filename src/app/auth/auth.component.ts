@@ -32,16 +32,16 @@ constructor(private authservice:AuthService){}
         
         
         //observable
-        let authobs$ : Observable<AuthSignUpModel>;
+        let authObs$ : Observable<AuthSignUpModel>;
         
 
         this.isloading = true;
       if(this.LoginMode){
-        authobs$ =  this.authservice.login(email , password)
+        authObs$ =  this.authservice.login(email , password)
        }else{
-        authobs$ = this.authservice.signup(email , password)
+        authObs$ = this.authservice.signup(email , password)
     }
-    authobs$.subscribe(
+    authObs$.subscribe(
         respnsData=>{
             console.log(respnsData);
             this.isloading = false
