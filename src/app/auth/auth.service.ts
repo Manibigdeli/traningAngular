@@ -13,6 +13,7 @@ import { UserModel } from "./user.model";
 
 @Injectable({providedIn:'root'})
 export class AuthService{
+
 user = new BehaviorSubject<UserModel>(null);
 
 constructor( private http : HttpClient){}
@@ -74,4 +75,4 @@ returnSecureToken:true
 
   }
 
-}
+} 

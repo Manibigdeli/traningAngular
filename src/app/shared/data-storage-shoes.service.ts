@@ -1,11 +1,10 @@
 import { ShopsService } from "../shops/shops.service";
 import { ShoesModel } from "../shops/shoes.model";
 
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map ,tap ,take } from "rxjs/operators";
 import { AuthService } from "../auth/auth.service";
-import { exhaustMap } from "rxjs/internal/operators/exhaustMap";
 @Injectable({providedIn:'root'})
 export class DataStorageService{
     constructor( private http:HttpClient ,
@@ -22,24 +21,22 @@ export class DataStorageService{
 
     }
 
+    
+
     FetchingData(){
-      return this.authservice.user.pipe(take(1),exhaustMap(user=>{
-            return this.http.get<ShoesModel[]>
-     ('https://angular-shoes-shop-default-rtdb.firebaseio.com/shoes.json'
-     ,{params: new HttpParams().set('auth' , user.tokens)})
-        }),map(
+     return this.http.get<ShoesModel[]>
+     ('https://angular-shoes-shop-default-rtdb.firebaseio.com/shoes.json').pipe(map(
             shoes=>{
                 return shoes.map(
                     shoes=>{
                         return{
-                            ...shoes
+                            ...shoes 
                               
                         }
-                    }
-                )}
-         ),
+            })
+        }),
          tap(shoes=>{
-            this.ShoesService.setShoes(shoes)
+            this.ShoesService.setShoes(shoes);
          }))
      
     }
