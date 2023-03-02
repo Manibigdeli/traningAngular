@@ -68,7 +68,6 @@ export class ShopsService{
 
       getshoes(){
         return this.shoes.slice()
-        this.shoeschanges.next(this.shoes.slice());
       }
 
 

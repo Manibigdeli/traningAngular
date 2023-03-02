@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
 import {  throwError } from "rxjs";
 import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
 import { catchError, tap } from "rxjs/operators";
@@ -16,7 +17,8 @@ export class AuthService{
 
 user = new BehaviorSubject<UserModel>(null);
 
-constructor( private http : HttpClient){}
+constructor( private http : HttpClient , 
+  private router:Router , private acitvateroute:ActivatedRoute){}
 
     signup(email:string, password:string){
   return this.http.post<AuthSignUpModel>
@@ -49,11 +51,31 @@ returnSecureToken:true
     )
 
   }
+  logout(){
+    this.user.next(null);
+    this.router.navigate(['/auth'],{relativeTo:this.acitvateroute})
+
+  }
 
   private Auth(email:string , idToken:string , expiresIn: number , userid:string){
     const exparationDate = new Date(new Date().getTime() + +expiresIn *1000);
     const user = new UserModel(email, userid , idToken , exparationDate);
     this.user.next(user);
+    localStorage.setItem('UserLoginData',JSON.stringify(user));//json converting to string
+  }
+
+  autologin(){
+  const userdatas:{
+    email:string , id:string , token:string , tokenexpration:string
+  } = JSON.parse(localStorage.getItem('UserLoginData')) ;
+  if(!userdatas){
+    return;
+  }
+  const newloadeduser = new UserModel(userdatas.email,
+    userdatas.id,userdatas.token,new Date(userdatas.tokenexpration));
+    if(userdatas.token){
+      this.user.next(newloadeduser)
+    }
   }
 
   private HandleError(errorRes : HttpErrorResponse){
@@ -71,6 +93,7 @@ returnSecureToken:true
           case 'EMAIL_NOT_FOUND':
             errormessage = 'EMAIL NOT FOUND'
   }
+  
   return throwError(errormessage)
 
   }

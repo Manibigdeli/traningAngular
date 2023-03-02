@@ -11,14 +11,13 @@
                 <li routerLinkActive="active" (click)="OnLogOut()"><a 
                     style="cursor: pointer;"
                      *ngIf="Authenticated">Logout</a></li>
-
             </ul>
            <ul class="nav navbar-nav navbar-right">
             <li class="dropdown" appDropdown>
                 <a  class="dropdown-toggle" style="cursor: pointer;">Manage <span class="caret"></span></a>
                 <ul class="dropdown-menu" style="cursor: pointer;">
                     <li><a  (click)="OnSaveData()">Save data</a></li>
-                    <li><a  (click)="FetchingDatas()">Load Data</a></li>
+                    <li><a (click)="fetchingdataload()">Load Data</a></li>
                 </ul>
             </li>
            </ul>

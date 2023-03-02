@@ -47,7 +47,7 @@ import { AuthInterCeptor } from './auth/auth-interceptor.service';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
     
   ],
   providers: [ShoppingListService,ShopsService,

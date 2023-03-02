@@ -12,8 +12,7 @@ export class ShopItemComponent implements OnInit {
  @Input() id:number
  constructor(){}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
  
 
 
