@@ -1,23 +1,29 @@
 <div class="row">
-    <div class="col-xs-12">
-        <button class="btn btn-success" 
-        (click)="OnAddnewShoes()">Add new Shoes </button> |
-        <button class="btn btn-danger" (click)="FetchingDatas()">Load Data</button>
-    </div>
-    <hr>
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="OnAddnewShoes()">
+      Add new Shoes
+    </button>
+    |
+    <button class="btn btn-danger" (click)="FetchingDatas()">Load Data</button>
+    |
+    <button class="btn btn-danger" (click)="onDeleteShoe()">Delete shoe</button>
+  </div>
+  <hr />
 </div>
 <div>
-    <app-loading-spinner></app-loading-spinner>
+  <app-loading-spinner></app-loading-spinner>
 </div>
 <div class="alert alert-danger" *ngIf="error">
-    <P>{{error}}</P>
+  <P>{{ error }}</P>
 </div>
 <div class="row">
-    <div class="col-xs-12">
-        <div *ngIf="fetchingmode">
-            <app-shop-item *ngFor="let shoeses of shoes ; let index = index"
-            [shoes]="shoeses" [id]="index"></app-shop-item>
-        </div>
-       
+  <div class="col-xs-12">
+    <div *ngIf="fetchingmode">
+      <app-shop-item
+        *ngFor="let shoeses of shoes; let index = index"
+        [shoes]="shoeses"
+        [id]="index"
+      ></app-shop-item>
     </div>
+  </div>
 </div>

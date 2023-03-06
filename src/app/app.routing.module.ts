@@ -8,26 +8,32 @@ import { ShopEditComponent } from "./shops/shop-edit/shop-edit.component";
 import { ShopStartComponent } from "./shops/shop-start/shop-start.component";
 import { ShopResolverService } from "./shops/shop.resolver.service";
 import { ShopsComponent } from "./shops/shops.component";
-const rout:Routes=[
-    {path:'',redirectTo:'/shop' ,pathMatch:'full'},
-    {path:'shop' , component:ShopsComponent,children:[
-        {path: '' , component:ShopStartComponent},
-        {path: 'new',component:ShopEditComponent},
-        {path:':id' , component:ShopDetailComponent,resolve:[ShopResolverService]},
-        {path: ':id/edit',component:ShopEditComponent,resolve:[ShopResolverService]},
-        
-
-    ]},
-    {path:'shopping-list' , component:ShoppingListComponent},
-    {path:'auth' , component:AuthComponent}
-]
-
-
-
-
+const rout: Routes = [
+  { path: "", redirectTo: "/shop", pathMatch: "full" },
+  {
+    path: "shop",
+    component: ShopsComponent,
+    children: [
+      { path: "", component: ShopStartComponent },
+      { path: "new", component: ShopEditComponent },
+      {
+        path: ":id",
+        component: ShopDetailComponent,
+        resolve: [ShopResolverService],
+      },
+      {
+        path: ":id/edit",
+        component: ShopEditComponent,
+        resolve: [ShopResolverService],
+      },
+    ],
+  },
+  { path: "shopping-list", component: ShoppingListComponent },
+  { path: "auth", component: AuthComponent },
+];
 
 @NgModule({
-    imports:[RouterModule.forRoot(rout)],
-    exports:[RouterModule]
+  imports: [RouterModule.forRoot(rout)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule{}
+export class AppRoutingModule {}
