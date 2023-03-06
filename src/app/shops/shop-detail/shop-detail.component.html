@@ -1,69 +1,78 @@
 <div class="row">
-    <div class="col-xs-12">
-        <img [src]="shoes.img" alt="{{shoes.name}}" style="max-height: 100px; border-radius: 20px;">
-    </div>
+  <div class="col-xs-12">
+    <img
+      [src]="shoes.img"
+      alt="{{ shoes.name }}"
+      style="max-height: 100px; border-radius: 20px"
+    />
+  </div>
 </div>
 <div class="row">
-    <div class="col-xs-12">
-        <h1>{{shoes.name}}</h1>
-    </div>
+  <div class="col-xs-12">
+    <h1>{{ shoes.name }}</h1>
+  </div>
 </div>
 <div class="row">
-    <div class="col-xs-12">
-        <div class="btn-group" appDropdown>
-            <button class="btn btn-danger dropdown-toggle">
-                Manage Shoes <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" style="cursor: pointer;">
-                <li><a  (click)="OnAddToShoppinList()">Add Shoes To Shopping-list</a></li>
-                <li><a  (click)="Onedit()" >Edit</a></li>
-                <li><a (click)="OnDelet()">Delete</a></li>
-            </ul>
-        </div>
+  <div class="col-xs-12">
+    <div class="btn-group" appDropdown>
+      <button class="btn btn-danger dropdown-toggle">
+        Manage Shoes <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" style="cursor: pointer">
+        <li>
+          <a (click)="OnAddToShoppinList()">Add Shoes To Shopping-list</a>
+        </li>
+        <li><a (click)="Onedit()">Edit</a></li>
+        <li><a (click)="OnDelet()">Delete</a></li>
+      </ul>
     </div>
+  </div>
 </div>
 <div class="row">
-    <div class="col-xs-12">
-        <span>{{shoes.descraption}}</span>
-    </div>
+  <div class="col-xs-12">
+    <span>{{ shoes.description }}</span>
+  </div>
 </div>
 <div class="row">
-    <div class="col-xs-12">
-        <ul class="list-group">
-            <li class="list-group-item" style="border: 1px solid red;">
-               This Shoes Price => <span class="price">${{shoes.price}}</span>
-            </li>
-        </ul>
-        <ul class="list-group">
-            <li class="list-group-item" *ngFor="let brands of shoes.brandmodel">
-               (Shoesbrand) {{brands.name}} | TotalAmount: {{brands.amount}} 
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <li class="list-group-item" style="border: 1px solid red">
+        This Shoes Price => <span class="price">${{ shoes.price }}</span>
+      </li>
+    </ul>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let brands of shoes.brandmodel">
+        (Shoesbrand) {{ brands.name }} | TotalAmount: {{ brands.amount }}
+      </li>
+    </ul>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let callmodel of shoes.call"
+        style="border: 1px solid black"
+      >
+        SupportCall: <span class="support">{{ callmodel.phone }}</span> |
+        SupportEmail: <span class="email">{{ callmodel.email }}</span>
+      </li>
+    </ul>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let size of shoes.shoessize">
+        Shoes Size = <span class="size">{{ size.Size }}</span>
+      </li>
+    </ul>
 
-            </li>
-        </ul>
-        <ul class="list-group">
-            <li class="list-group-item" *ngFor="let callmodel of shoes.call" style="border: 1px solid black;">
-                SupportCall:  <span class="support">{{callmodel.phone}}</span>  | SupportEmail: <span class="email">{{callmodel.email}}</span> 
-
-            </li>
-        </ul>
-        <ul class="list-group">
-            <li class="list-group-item" *ngFor="let size of shoes.shoessize">
-                Shoes Size = <span class="size">{{size.Size}}</span>
-            </li>
-        </ul>
-        
-        
-                <div class="radio-inline" *ngFor="let colors of color">
-                    <label>
-                        <input type="radio"  id="radio" [value]="color">
-                        {{colors}}
-                    </label>
-                </div> 
-                <div class="button-group">
-                    <button (click)="OnAddToShoppinList()" class="btn btn-success">Add to Shop</button> |
-                    <button (click)="OneditShoes()" class="btn btn-warning">Edit</button>
-
-                </div>
-            
+    <div class="radio-inline" *ngFor="let colors of color">
+      <label>
+        <input type="radio" id="radio" [value]="color" />
+        {{ colors }}
+      </label>
     </div>
+    <div class="button-group">
+      <button (click)="OnAddToShoppinList()" class="btn btn-success">
+        Add to Shop
+      </button>
+      |
+      <button (click)="OneditShoes()" class="btn btn-warning">Edit</button>
+    </div>
+  </div>
 </div>
