@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <progress-bar-query-example *ngIf="isloading"></progress-bar-query-example>
+
+        <div class="alert alert-danger" *ngIf="error">
+            <p>{{error}}</p>
+        </div>
+        <div *ngIf="isloading" style="text-align: center;">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+        <form (ngSubmit)="OnSubmite(authform)" #authform="ngForm" *ngIf="!isloading">
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email"
+                 id="email" class="form-control" name="email" 
+                 ngModel required email placeholder="Example Mani.bigdeli1381@gmail.com">
+                 <span class="help-block" *ngIf="!authform.valid
+                  && authform.touched">Please enter email</span>
+            </div>
+            <div class="form-group">
+                <label for="password">password</label>
+                <input type="password"
+                 id="password" class="form-control" minlength="4" 
+                 name="password" ngModel required placeholder="Example info@9020">
+                 <span class="help-block" *ngIf="!authform.valid
+                  && authform.touched">Please enter password</span>
+            </div>
+            <div>
+                <button mat-raised-button [disabled]="!authform.valid" type="submit" color="accent"> <span nz-icon nzType="user"
+                     nzTheme="outline"></span>{{LoginMode ? 'Login' : 'SignUp'}}</button> |
+                    <button mat-raised-button color="primary" (click)="onswithMode()">Switch {{LoginMode? 'Signup' : 'Login'}}</button>
+
+                
+            </div>   
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-xs-12">
+        <button mat-raised-button color="primary" (click)="OnAddnewShoes()" >Add new Shoes</button> |
+        <button mat-raised-button color="warn"  
+         matBadge="{{id}}" matBadgePosition="before"
+         matBadgeColor="primary"  (click)="FetchingDatas('success')">Load Data</button>    
+    </div>
+    <hr>
+</div>
+<div>
+    <!-- <app-loading-spinner></app-loading-spinner> -->
+    <progress-bar-query-example *ngIf="progress"></progress-bar-query-example>
+</div>
+<div class="alert alert-danger" *ngIf="error">
+    <P>{{error}}</P>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div *ngIf="fetchingmode">
+            <app-shop-item *ngFor="let shoeses of shoes ; let index = index"
+            [shoes]="shoeses" [id]="index"></app-shop-item>
+        </div>
+       
+    </div>
+</div>

@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form [formGroup]="ShoesForm" (ngSubmit)="Onsubmit()">
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="btn btn-success" type="submit" [disabled]="!ShoesForm.valid">{{editMode ? 'Update' : 'Add'}}</button> |
+                    <button class="btn btn-danger" type="button" (click)="Oncancel()">Cancel</button> |
+                    <button class="btn btn-warning" type="button" (click)="OnHome()">Home</button>
+                </div><hr>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="name">name:</label>
+                        <input type="text" id="name" class="form-control" formControlName="name">
+                        <span style="color: red;" class="help-block" 
+                        *ngIf="!ShoesForm.get('name').valid 
+                        && ShoesForm.get('name').touched">Please Enter name!</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="img">img url:</label>
+                        <input type="text" id="img" class="form-control" formControlName="img" #imgurl>
+                        <span class="help-block" style="color: red;"
+                         *ngIf="!ShoesForm.get('img').valid 
+                         && ShoesForm.get('img').touched">Please Enter image!</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <img [src]="imgurl.value"  class="img-responsive" style="border-radius: 20px;max-width: 150px;">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="name">Description:</label>
+                        <textarea  id="description" rows="6" class="form-control" formControlName="description">
+                        </textarea>
+                        <span class="help-block" style="color: red;"
+                        *ngIf="!ShoesForm.get('description').valid && ShoesForm.get('description').touched">
+                        Please Enter Description!</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12" formArrayName="brandform" >
+                    <div class="row" *ngFor="let bran of ShoesForm.get('brandform').controls; let i = index" 
+                    [formGroupName]="i">
+                        <div class="col-xs-8">
+                            <label>brand:</label>
+                            <input type="text" class="form-control" formControlName="name">
+                        </div>
+                        <div class="col-xs-2">
+                            <label>Amount:</label>
+                            <input type="number" class="form-control" formControlName="amount">
+                        </div><br>
+                        <div class="col-xs-2">
+                            <button class="btn btn-danger" style="margin-top: 5px;" type="button" (click)="Oncancelbrands(i)">X</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button class="btn btn-success" type="button" 
+                            (click)="Addbrands()">Add brand</button>
+                        </div>
+                    </div>
+                        
+                    
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
